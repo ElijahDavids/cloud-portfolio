@@ -1,1 +1,342 @@
+
 @import "tailwindcss";
+
+/* ========================================
+   PORTFOLIO COLOR SCHEME
+======================================== */
+
+:root {
+  --portfolio-bg: #0B1020;
+  --portfolio-blue: #38BDF8;
+  --portfolio-indigo: #818CF8;
+  --portfolio-violet: #A78BFA;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   1. HERO ENTRANCE ANIMATIONS
+======================================== */
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate {
+  animation: hero-enter 700ms ease-out both;
+}
+
+.hero-delay-1 {
+  animation-delay: 120ms;
+}
+
+.hero-delay-2 {
+  animation-delay: 240ms;
+}
+
+.hero-delay-3 {
+  animation-delay: 360ms;
+}
+
+/* ========================================
+   2. BLUE + VIOLET HERO GRADIENT
+======================================== */
+
+.hero-gradient {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 30%,
+      rgba(56, 189, 248, 0.14),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 82% 65%,
+      rgba(167, 139, 250, 0.19),
+      transparent 52%
+    ),
+    #0B1020;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 10%,
+    rgba(56, 189, 248, 0.07) 36%,
+    rgba(167, 139, 250, 0.12) 66%,
+    transparent 90%
+  );
+
+  filter: blur(45px);
+  animation: aurora-drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate(-3%, -2%) rotate(-3deg);
+  }
+
+  to {
+    transform: translate(3%, 2%) rotate(3deg);
+  }
+}
+
+/* Decorative blue and violet glows */
+
+.hero-orb {
+  position: absolute;
+  z-index: -1;
+  width: min(22rem, 70vw);
+  height: min(22rem, 70vw);
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  opacity: 0.23;
+}
+
+.hero-orb-blue {
+  left: -10%;
+  top: 30%;
+  background: var(--portfolio-blue);
+}
+
+.hero-orb-violet {
+  right: -9%;
+  top: 5%;
+  background: var(--portfolio-violet);
+}
+
+/* Gradient heading text */
+
+.gradient-text {
+  background: linear-gradient(
+    100deg,
+    #38BDF8 0%,
+    #818CF8 50%,
+    #A78BFA 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ========================================
+   3. INTERACTIVE PROJECT CARDS
+======================================== */
+
+.project-card-animated,
+.infrastructure-node {
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.project-card-animated:hover,
+.infrastructure-node:hover {
+  transform: translateY(-6px);
+  border-color: var(--portfolio-violet);
+
+  box-shadow:
+    0 16px 42px rgba(56, 189, 248, 0.08),
+    0 16px 42px rgba(167, 139, 250, 0.13);
+}
+
+.project-card-animated:focus-within,
+.infrastructure-node:focus-within {
+  border-color: var(--portfolio-violet);
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(#111B30, #111B30) padding-box,
+    linear-gradient(
+      120deg,
+      rgba(56, 189, 248, 0.6),
+      rgba(167, 139, 250, 0.65)
+    ) border-box;
+}
+
+/* ========================================
+   BUTTON HOVER EFFECTS
+======================================== */
+
+.gradient-hover {
+  transition:
+    background 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+.gradient-hover:hover {
+  background: linear-gradient(
+    110deg,
+    #38BDF8,
+    #818CF8,
+    #A78BFA
+  );
+
+  color: #0B1020;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 28px rgba(167, 139, 250, 0.24);
+}
+
+.secondary-button {
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background 200ms ease;
+}
+
+.secondary-button:hover {
+  border-color: var(--portfolio-violet);
+  color: #C4B5FD;
+  background: rgba(167, 139, 250, 0.07);
+}
+
+/* Navigation underline animation */
+
+.nav-link {
+  position: relative;
+  transition: color 180ms ease;
+}
+
+.nav-link:hover {
+  color: #C4B5FD;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -5px;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #38BDF8,
+    #A78BFA
+  );
+
+  transition: right 200ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  right: 0;
+}
+
+/* ========================================
+   4. SCROLL REVEAL ANIMATIONS
+======================================== */
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-ready .reveal {
+  transition:
+    opacity 650ms ease,
+    transform 650ms ease;
+}
+
+.reveal-ready .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ========================================
+   5. ANIMATED CLOUD ARCHITECTURE
+======================================== */
+
+.architecture-panel {
+  background: linear-gradient(
+    125deg,
+    rgba(56, 189, 248, 0.07),
+    rgba(167, 139, 250, 0.09) 70%,
+    rgba(11, 16, 32, 0.9)
+  );
+}
+
+.infrastructure-line {
+  stroke-dasharray: 6 6;
+  animation: signal-flow 1.7s linear infinite;
+}
+
+@keyframes signal-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-animate,
+  .hero-gradient::before,
+  .infrastructure-line {
+    animation: none !important;
+  }
+
+  .hero-animate {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-ready .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .project-card-animated,
+  .infrastructure-node,
+  .gradient-hover,
+  .secondary-button,
+  .nav-link,
+  .nav-link::after {
+    transition: none !important;
+  }
+
+  .project-card-animated:hover,
+  .infrastructure-node:hover,
+  .gradient-hover:hover {
+    transform: none;
+  }
+}

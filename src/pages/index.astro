@@ -3,20 +3,13 @@
 import "../styles/global.css";
 
 const skills = [
-
   {
     category: "Cloud & Infrastructure",
     items: ["AWS", "EC2", "S3", "IAM", "VPC", "Lambda"],
   },
   {
     category: "Networking",
-    items: [
-      "TCP/IP",
-      "DNS",
-      "Subnetting",
-      "Routing",
-      "Network Troubleshooting",
-    ],
+    items: ["TCP/IP", "DNS", "Subnetting", "Routing", "Network Troubleshooting"],
   },
   {
     category: "Development & Tools",
@@ -67,11 +60,8 @@ const certifications = [
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#0B1020" />
     <meta
       name="description"
@@ -81,97 +71,79 @@ const certifications = [
   </head>
 
   <body class="bg-[#0B1020] text-slate-100 antialiased">
-
     <!-- NAVIGATION -->
     <header
-      class="sticky top-0 z-50 border-b border-slate-800/70
-             bg-[#0B1020]/90 backdrop-blur-lg"
+      class="sticky top-0 z-50 border-b border-slate-800/70 bg-[#0B1020]/90 backdrop-blur-lg"
     >
       <nav
-        class="mx-auto flex max-w-6xl flex-wrap
-               items-center justify-between gap-4 px-6 py-5"
+        class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5"
       >
-        <a href="#" class="text-2xl font-bold tracking-tight">
-          ED<span class="text-sky-400">.</span>
+        <a href="#" class="text-2xl font-bold tracking-tight" aria-label="Back to top">
+          ED<span class="text-violet-400">.</span>
         </a>
 
         <div class="flex flex-wrap gap-4 text-sm text-slate-300 md:gap-6">
-          <a href="#about" class="hover:text-sky-400">
-            About
-          </a>
-          <a href="#projects" class="hover:text-sky-400">
-            Projects
-          </a>
-          <a href="#experience" class="hover:text-sky-400">
-            Experience
-          </a>
-          <a href="#skills" class="hover:text-sky-400">
-            Skills
-          </a>
-          <a href="#contact" class="hover:text-sky-400">
-            Contact
-          </a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </div>
       </nav>
     </header>
 
     <main>
-
       <!-- HERO -->
-      <section
-        class="relative mx-auto max-w-6xl px-6 py-28 md:py-36"
-      >
-        <div
-          class="pointer-events-none absolute right-0 top-16
-                 -z-10 h-72 w-72 rounded-full
-                 bg-sky-500/10 blur-3xl"
-        ></div>
+     <section
+  class="hero-gradient relative overflow-hidden"
+  aria-labelledby="hero-heading"
+>
+  <div class="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <div class="hero-orb hero-orb-blue" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-violet" aria-hidden="true"></div>
 
-        <p
-          class="mb-6 font-mono text-sm tracking-widest text-sky-400"
-        >
-          CLOUD COMPUTING / INFRASTRUCTURE / AWS
-        </p>
+        <div class="relative z-10">
+          <p class="hero-animate mb-6 font-mono text-sm tracking-widest text-sky-400">
+            CLOUD COMPUTING / INFRASTRUCTURE / AWS
+          </p>
 
-        <h1
-          class="text-6xl font-bold tracking-tight md:text-8xl"
-        >
-          Hi, I'm <span class="text-sky-400">Elijah.</span>
-        </h1>
-
-        <h2
-          class="mt-6 max-w-3xl text-2xl font-semibold
-                 text-slate-200 md:text-4xl"
-        >
-          Aspiring Cloud & Infrastructure Engineer.
-        </h2>
-
-        <p
-          class="mt-7 max-w-2xl text-lg leading-8 text-slate-400"
-        >
-          AWS Certified Cloud Practitioner and CompTIA Network+
-          certified. Passionate about cloud infrastructure,
-          networking, and solving complex technical problems.
-        </p>
-
-        <div class="mt-10 flex flex-wrap gap-4">
-          <a
-            href="#projects"
-            class="rounded-lg bg-sky-400 px-7 py-3
-                   font-semibold text-slate-950 transition
-                   hover:bg-sky-300"
+          <h1
+            id="hero-heading"
+            class="hero-animate hero-delay-1 text-6xl font-bold tracking-tight md:text-8xl"
           >
-            Explore My Work →
-          </a>
+            Hi, I'm <span class="gradient-text">Elijah.</span>
+          </h1>
 
-          <a
-            href="#contact"
-            class="rounded-lg border border-slate-700
-                   px-7 py-3 font-semibold transition
-                   hover:border-sky-400"
+          <h2
+            class="hero-animate hero-delay-2 mt-6 max-w-3xl text-2xl font-semibold text-slate-200 md:text-4xl"
           >
-            Contact Me
-          </a>
+            Aspiring Cloud & Infrastructure Engineer.
+          </h2>
+
+          <p
+            class="hero-animate hero-delay-2 mt-7 max-w-2xl text-lg leading-8 text-slate-300"
+          >
+            AWS Certified Cloud Practitioner and CompTIA Network+ certified.
+            Passionate about cloud infrastructure, networking, and solving
+            complex technical problems.
+          </p>
+
+          <div class="hero-animate hero-delay-3 mt-10 flex flex-wrap gap-4">
+            <a
+              href="#projects"
+              class="gradient-hover inline-flex items-center rounded-lg bg-sky-400 px-7 py-3 font-semibold text-slate-950"
+            >
+              Explore My Work →
+            </a>
+
+            <a
+              href="#contact"
+              class="secondary-button inline-flex items-center rounded-lg border border-violet-400/60 px-7 py-3 font-semibold text-violet-200"
+            >
+              Contact Me
+            </a>
+			</div>
+          </div>
         </div>
       </section>
 
@@ -180,32 +152,23 @@ const certifications = [
         id="about"
         class="scroll-mt-24 border-y border-slate-800 bg-[#111B30]"
       >
-        <div class="mx-auto max-w-6xl px-6 py-20">
-          <p class="font-mono text-sm text-sky-400">
-            01 / ABOUT
+        <div class="reveal mx-auto max-w-6xl px-6 py-20">
+          <p class="font-mono text-sm text-violet-400">01 / ABOUT</p>
+
+          <h2 class="mt-3 text-4xl font-bold">About Me</h2>
+
+          <p class="mt-7 max-w-3xl text-lg leading-8 text-slate-300">
+            I'm pursuing a Bachelor of Applied Science in Computing
+            Technology and Software Development, concentrating in Cloud
+            Computing at Valencia College, with an expected graduation
+            date of May 2027.
           </p>
 
-          <h2 class="mt-3 text-4xl font-bold">
-            About Me
-          </h2>
-
-          <p
-            class="mt-7 max-w-3xl text-lg leading-8 text-slate-300"
-          >
-            I'm pursuing a Bachelor of Applied Science in
-            Computing Technology and Software Development,
-            concentrating in Cloud Computing at Valencia College,
-            with an expected graduation date of May 2027.
-          </p>
-
-          <p
-            class="mt-5 max-w-3xl leading-8 text-slate-400"
-          >
-            My professional background combines technical
-            troubleshooting, customer support, and operational
-            experience. I'm focused on developing the skills
-            needed to build, manage, and secure modern cloud
-            infrastructure.
+          <p class="mt-5 max-w-3xl leading-8 text-slate-400">
+            My professional background combines technical troubleshooting,
+            customer support, and operational experience. I'm focused on
+            developing the skills needed to build, manage, and secure
+            modern cloud infrastructure.
           </p>
         </div>
       </section>
@@ -213,25 +176,19 @@ const certifications = [
       <!-- 02 PROJECTS -->
       <section
         id="projects"
-        class="scroll-mt-24 mx-auto max-w-6xl px-6 py-24"
+        class="reveal scroll-mt-24 mx-auto max-w-6xl px-6 py-24"
       >
-        <p class="font-mono text-sm text-sky-400">
-          02 / PROJECTS
-        </p>
+        <p class="font-mono text-sm text-sky-400">02 / PROJECTS</p>
 
-        <h2 class="mt-3 text-4xl font-bold">
-          Featured Projects
-        </h2>
+        <h2 class="mt-3 text-4xl font-bold">Featured Projects</h2>
 
         <p class="mt-4 max-w-2xl leading-7 text-slate-400">
-          Independent projects documenting my development,
-          technical problem-solving, and cloud engineering journey.
+          Independent projects documenting my development, technical
+          problem-solving, and cloud engineering journey.
         </p>
 
         <article
-          class="mt-10 rounded-xl border border-slate-800
-                 bg-[#111B30] p-8 transition
-                 hover:border-sky-400/60 md:p-10"
+          class="project-card-animated gradient-border mt-10 rounded-xl p-8 md:p-10"
         >
           <div class="flex flex-wrap items-center justify-between gap-4">
             <p class="font-mono text-sm text-sky-400">
@@ -239,9 +196,7 @@ const certifications = [
             </p>
 
             <span
-              class="rounded-full border border-sky-400/30
-                     bg-sky-400/10 px-3 py-1 text-xs
-                     font-medium text-sky-300"
+              class="rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-300"
             >
               Deployed
             </span>
@@ -252,10 +207,9 @@ const certifications = [
           </h3>
 
           <p class="mt-4 max-w-2xl leading-7 text-slate-400">
-            Designed and developed a responsive professional
-            portfolio using Astro and Tailwind CSS.
-            Implemented automated deployments through GitHub
-            and Vercel, with custom-domain DNS management
+            Designed and developed a responsive professional portfolio
+            using Astro and Tailwind CSS. Implemented automated deployments
+            through GitHub and Vercel, with custom-domain DNS management
             through Cloudflare.
           </p>
 
@@ -268,10 +222,7 @@ const certifications = [
               "Vercel",
               "Cloudflare",
             ].map((tech) => (
-              <span
-                class="rounded-md bg-sky-400/10
-                       px-3 py-2 text-sm text-sky-300"
-              >
+              <span class="rounded-md bg-sky-400/10 px-3 py-2 text-sm text-sky-300">
                 {tech}
               </span>
             ))}
@@ -280,9 +231,7 @@ const certifications = [
           <div class="mt-8 flex flex-wrap gap-4">
             <a
               href="/projects/cloud-portfolio"
-              class="rounded-lg bg-sky-400 px-6 py-3
-                     font-semibold text-slate-950 transition
-                     hover:bg-sky-300"
+              class="gradient-hover inline-flex items-center rounded-lg bg-sky-400 px-6 py-3 font-semibold text-slate-950"
             >
               Read Case Study →
             </a>
@@ -291,14 +240,109 @@ const certifications = [
               href="https://github.com/Ejahmix/cloud-portfolio"
               target="_blank"
               rel="noopener noreferrer"
-              class="rounded-lg border border-slate-700
-                     px-6 py-3 font-semibold transition
-                     hover:border-sky-400 hover:text-sky-400"
+              class="secondary-button inline-flex items-center rounded-lg border border-slate-700 px-6 py-3 font-semibold"
             >
               View Source Code ↗
             </a>
           </div>
         </article>
+
+        <!-- ANIMATED DEPLOYMENT ARCHITECTURE -->
+        <div class="reveal mt-20">
+          <p class="font-mono text-sm text-violet-400">
+            DEPLOYMENT ARCHITECTURE
+          </p>
+
+          <h3 class="mt-3 text-2xl font-bold">
+            From Source Code to Live Website
+          </h3>
+
+          <p class="mt-3 max-w-3xl leading-7 text-slate-400">
+            GitHub stores the source code. A push triggers Vercel to build
+            and host the site. Cloudflare manages the DNS record that
+            points my custom domain to Vercel.
+          </p>
+
+          <div
+            class="architecture-panel mt-8 rounded-2xl border border-slate-700/80 p-5 md:p-8"
+          >
+            <div
+              class="architecture-flow grid items-center gap-3 md:grid-cols-[1fr_56px_1fr_56px_1fr]"
+            >
+              <div
+                class="infrastructure-node rounded-xl border border-sky-400/40 bg-[#111B30] p-6 text-center"
+              >
+                <div class="mb-2 text-2xl" aria-hidden="true">⌘</div>
+                <h4 class="text-lg font-bold text-slate-100">GitHub</h4>
+                <p class="mt-1 text-sm text-slate-400">Source control</p>
+              </div>
+
+              <svg
+                class="architecture-connector mx-auto h-8 w-12 rotate-90 md:rotate-0"
+                viewBox="0 0 56 32"
+                aria-hidden="true"
+              >
+                <path
+                  class="infrastructure-line"
+                  d="M2 16 H48"
+                  fill="none"
+                  stroke="#38BDF8"
+                  stroke-width="2"
+                />
+                <path
+                  d="m42 10 8 6-8 6"
+                  fill="none"
+                  stroke="#A78BFA"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <div
+                class="infrastructure-node rounded-xl border border-violet-400/50 bg-[#17172F] p-6 text-center"
+              >
+                <div class="mb-2 text-2xl" aria-hidden="true">◇</div>
+                <h4 class="text-lg font-bold text-slate-100">Vercel</h4>
+                <p class="mt-1 text-sm text-slate-400">Build & Hosting</p>
+              </div>
+
+              <svg
+                class="architecture-connector mx-auto h-8 w-12 rotate-90 md:rotate-0"
+                viewBox="0 0 56 32"
+                aria-hidden="true"
+              >
+                <path
+                  class="infrastructure-line"
+                  d="M2 16 H48"
+                  fill="none"
+                  stroke="#A78BFA"
+                  stroke-width="2"
+                />
+                <path
+                  d="m42 10 8 6-8 6"
+                  fill="none"
+                  stroke="#38BDF8"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <div
+                class="infrastructure-node rounded-xl border border-sky-400/40 bg-[#111B30] p-6 text-center"
+              >
+                <div class="mb-2 text-2xl" aria-hidden="true">◎</div>
+                <h4 class="text-lg font-bold text-slate-100">Cloudflare</h4>
+                <p class="mt-1 text-sm text-slate-400">Custom-Domain DNS</p>
+              </div>
+            </div>
+
+            <p class="mt-6 text-center text-xs text-slate-400">
+              Deployment: GitHub → Vercel · DNS: Cloudflare → Vercel-hosted site
+            </p>
+          </div>
+        </div>
       </section>
 
       <!-- 03 EXPERIENCE -->
@@ -306,25 +350,18 @@ const certifications = [
         id="experience"
         class="scroll-mt-24 border-y border-slate-800 bg-[#111B30]"
       >
-        <div class="mx-auto max-w-6xl px-6 py-24">
-          <p class="font-mono text-sm text-sky-400">
-            03 / CAREER
-          </p>
+        <div class="reveal mx-auto max-w-6xl px-6 py-24">
+          <p class="font-mono text-sm text-violet-400">03 / CAREER</p>
 
           <h2 class="mt-3 text-4xl font-bold">
             Professional Experience
           </h2>
 
-          <div
-            class="mt-12 space-y-10 border-l
-                   border-sky-400/40 pl-8"
-          >
+          <div class="mt-12 space-y-10 border-l border-sky-400/40 pl-8">
             {experience.map((job) => (
               <article class="relative">
                 <span
-                  class="absolute -left-[39px] top-2 h-4 w-4
-                         rounded-full border-4 border-[#111B30]
-                         bg-sky-400"
+                  class="absolute -left-[39px] top-2 h-4 w-4 rounded-full border-4 border-[#111B30] bg-violet-400"
                 ></span>
 
                 <p class="font-mono text-sm text-sky-400">
@@ -351,22 +388,16 @@ const certifications = [
       <!-- 04 SKILLS -->
       <section
         id="skills"
-        class="scroll-mt-24 mx-auto max-w-6xl px-6 py-24"
+        class="reveal scroll-mt-24 mx-auto max-w-6xl px-6 py-24"
       >
-        <p class="font-mono text-sm text-sky-400">
-          04 / TOOLKIT
-        </p>
+        <p class="font-mono text-sm text-sky-400">04 / TOOLKIT</p>
 
-        <h2 class="mt-3 text-4xl font-bold">
-          Technical Skills
-        </h2>
+        <h2 class="mt-3 text-4xl font-bold">Technical Skills</h2>
 
         <div class="mt-10 grid gap-6 md:grid-cols-3">
           {skills.map((group) => (
             <div
-              class="rounded-xl border border-slate-700
-                     bg-[#111B30] p-7 transition
-                     hover:border-sky-400/60"
+              class="project-card-animated rounded-xl border border-slate-700 bg-[#111B30] p-7"
             >
               <h3 class="text-xl font-semibold">
                 {group.category}
@@ -375,8 +406,7 @@ const certifications = [
               <div class="mt-6 flex flex-wrap gap-2">
                 {group.items.map((skill) => (
                   <span
-                    class="rounded-md bg-sky-400/10
-                           px-3 py-2 text-sm text-sky-300"
+                    class="rounded-md bg-sky-400/10 px-3 py-2 text-sm text-sky-300"
                   >
                     {skill}
                   </span>
@@ -388,11 +418,9 @@ const certifications = [
       </section>
 
       <!-- 05 CERTIFICATIONS -->
-      <section
-        class="border-y border-slate-800 bg-[#111B30]"
-      >
-        <div class="mx-auto max-w-6xl px-6 py-24">
-          <p class="font-mono text-sm text-sky-400">
+      <section class="border-y border-slate-800 bg-[#111B30]">
+        <div class="reveal mx-auto max-w-6xl px-6 py-24">
+          <p class="font-mono text-sm text-violet-400">
             05 / QUALIFICATIONS
           </p>
 
@@ -403,8 +431,7 @@ const certifications = [
           <div class="mt-10 grid gap-5 md:grid-cols-2">
             {certifications.map((cert) => (
               <div
-                class="rounded-xl border border-slate-700
-                       bg-[#0B1020] p-7"
+                class="project-card-animated rounded-xl border border-slate-700 bg-[#0B1020] p-7"
               >
                 <h3 class="text-lg font-semibold">
                   {cert.title}
@@ -422,7 +449,7 @@ const certifications = [
       <!-- 06 CONTACT -->
       <section
         id="contact"
-        class="scroll-mt-24 px-6 py-24 text-center"
+        class="reveal scroll-mt-24 px-6 py-24 text-center"
       >
         <p class="font-mono text-sm text-sky-400">
           06 / CONNECT
@@ -432,20 +459,15 @@ const certifications = [
           Let's Connect.
         </h2>
 
-        <p
-          class="mx-auto mt-5 max-w-xl leading-8 text-slate-400"
-        >
-          I'm open to early-career opportunities in cloud
-          computing, IT infrastructure, and technical operations.
-          Feel free to reach out!
+        <p class="mx-auto mt-5 max-w-xl leading-8 text-slate-400">
+          I'm open to early-career opportunities in cloud computing,
+          IT infrastructure, and technical operations. Feel free to reach out!
         </p>
 
         <div class="mt-10 flex flex-wrap justify-center gap-4">
           <a
             href="mailto:contact@elijahdavids.com?subject=Portfolio%20Inquiry"
-            class="rounded-lg bg-sky-400 px-7 py-3
-                   font-semibold text-slate-950 transition
-                   hover:bg-sky-300"
+            class="gradient-hover inline-flex items-center rounded-lg bg-sky-400 px-7 py-3 font-semibold text-slate-950"
           >
             ✉ Email Me
           </a>
@@ -454,9 +476,7 @@ const certifications = [
             href="https://www.linkedin.com/in/elijahdavids/"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-lg border border-slate-700
-                   px-7 py-3 font-semibold transition
-                   hover:border-sky-400 hover:text-sky-400"
+            class="secondary-button inline-flex items-center rounded-lg border border-slate-700 px-7 py-3 font-semibold"
           >
             LinkedIn ↗
           </a>
@@ -465,25 +485,48 @@ const certifications = [
             href="https://github.com/Ejahmix"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-lg border border-slate-700
-                   px-7 py-3 font-semibold transition
-                   hover:border-sky-400 hover:text-sky-400"
+            class="secondary-button inline-flex items-center rounded-lg border border-slate-700 px-7 py-3 font-semibold"
           >
             GitHub ↗
           </a>
         </div>
       </section>
-
     </main>
 
     <!-- FOOTER -->
     <footer
-      class="border-t border-slate-800 py-8
-             text-center text-sm text-slate-500"
+      class="border-t border-slate-800 py-8 text-center text-sm text-slate-500"
     >
-      © {new Date().getFullYear()} Elijah Davids.
-      Built with Astro.
+      © {new Date().getFullYear()} Elijah Davids. Built with Astro.
     </footer>
 
+    <!-- SCROLL REVEAL SCRIPT -->
+    <script>
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        const elements = document.querySelectorAll<HTMLElement>(".reveal");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin: "0px 0px -24px 0px",
+          }
+        );
+
+        elements.forEach((element) => observer.observe(element));
+        document.documentElement.classList.add("reveal-ready");
+      }
+    </script>
   </body>
 </html>
