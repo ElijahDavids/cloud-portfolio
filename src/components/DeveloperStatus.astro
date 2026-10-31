@@ -3,22 +3,10 @@
 const discordId = "245383078283968513";
 
 const socials = [
-  {
-    label: "GitHub",
-    href: "https://github.com/Ejahmix",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/elijahdavids",
-  },
-  {
-    label: "Discord",
-    href: `https://discord.com/users/${discordId}`,
-  },
-  {
-    label: "Email",
-    href: "mailto:contact@elijahdavids.com",
-  },
+  { label: "GitHub", href: "https://github.com/Ejahmix" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/elijahdavids" },
+  { label: "Discord", href: `https://discord.com/users/${discordId}` },
+  { label: "Email", href: "mailto:contact@elijahdavids.com" },
 ];
 ---
 
@@ -40,13 +28,11 @@ const socials = [
     </h2>
   </div>
 
-  <!-- LOCAL CLOCK -->
+  <!-- LOCAL TIME AND WEATHER -->
   <div class="rounded-xl border border-slate-700/70 bg-[#0B1020]/90 p-5">
     <div class="flex items-start justify-between gap-3">
       <div class="min-w-0">
-        <p class="text-xs text-slate-400">
-          Local time
-        </p>
+        <p class="text-xs text-slate-400">Local time</p>
 
         <div class="mt-3 flex flex-wrap items-center gap-2">
           <p
@@ -64,19 +50,13 @@ const socials = [
           </span>
         </div>
 
-        <p
-          id="developer-date"
-          class="mt-2 text-xs text-violet-300"
-        >
+        <p id="developer-date" class="mt-2 text-xs text-violet-300">
           Eastern Time
         </p>
       </div>
 
-      <!-- LOCATION + LIVE WEATHER -->
       <div class="flex shrink-0 flex-col items-end gap-3">
-        <span class="text-[10px] text-violet-300">
-          Orlando, FL
-        </span>
+        <span class="text-[10px] text-violet-300">Orlando, FL</span>
 
         <div
           id="developer-weather"
@@ -112,45 +92,127 @@ const socials = [
     </div>
   </div>
 
-  <!-- STATUS -->
-  <div class="mt-4 rounded-xl border border-slate-700/70 bg-[#0B1020]/90 p-5">
-    <p class="text-xs text-slate-400">
-      Status
-    </p>
+  <!-- SIDE-BY-SIDE STATUS AND MUSIC -->
+  <div class="mt-4 grid grid-cols-2 gap-3">
 
-    <div class="mt-4 flex items-center gap-3">
-      <div class="relative h-12 w-12 shrink-0">
-        <img
-          id="discord-avatar"
-          src="/favicon.svg"
-          alt="Discord profile avatar"
-          class="h-12 w-12 rounded-full bg-slate-800 object-cover"
-          width="48"
-          height="48"
-        />
+    <!-- DISCORD STATUS -->
+    <div
+      class="min-w-0 rounded-xl border border-slate-700/70 bg-[#0B1020]/90 p-4"
+    >
+      <div class="flex items-center gap-1.5">
+  <p class="text-xs text-slate-400">Status</p>
+
+  <span
+    id="discord-header-dot"
+    class="h-1.5 w-1.5 rounded-full bg-slate-500"
+    aria-label="Discord connection status"
+  ></span>
+</div>
+
+      <div class="mt-4 flex items-center gap-2">
+        <div class="relative h-10 w-10 shrink-0">
+          <img
+            id="discord-avatar"
+            src="/favicon.svg"
+            alt="Discord profile avatar"
+            class="h-10 w-10 rounded-full bg-slate-800 object-cover"
+            width="40"
+            height="40"
+          />
+
+          <span
+            id="discord-status-dot"
+            class="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-[3px] border-[#0B1020] bg-slate-500"
+            aria-hidden="true"
+          ></span>
+        </div>
+
+        <div class="min-w-0 flex-1">
+          <p
+            id="discord-username"
+            class="truncate text-xs font-semibold text-slate-100"
+            title="Discord"
+          >
+            Discord
+          </p>
+
+          <p
+            id="discord-status"
+            class="mt-1 truncate text-[11px] text-slate-400"
+            aria-live="polite"
+          >
+            Connecting...
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPLE MUSIC / LISTENING TO -->
+    <div
+      id="apple-music-panel"
+      class="min-w-0 rounded-xl border border-violet-400/25 bg-[#0B1020]/90 p-4"
+    >
+      <div class="flex items-center gap-1.5">
+        <p class="text-xs text-slate-400">Listening</p>
 
         <span
-          id="discord-status-dot"
-          class="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-[3px] border-[#0B1020] bg-slate-500"
-          aria-hidden="true"
+          id="apple-music-live-dot"
+          class="hidden h-1.5 w-1.5 rounded-full bg-violet-400"
+          aria-label="Music playing"
         ></span>
       </div>
 
-      <div class="min-w-0">
-        <p
-          id="discord-username"
-          class="truncate text-sm font-semibold text-slate-100"
+      <div class="mt-4 flex items-center gap-2">
+        <div
+          class="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-violet-400/20 bg-[#17243D]"
         >
-          Discord
-        </p>
+          <img
+            id="apple-music-artwork"
+            class="hidden h-full w-full object-cover"
+            alt="Album artwork"
+            width="40"
+            height="40"
+          />
 
-        <p
-          id="discord-status"
-          class="mt-1 text-xs text-slate-400"
-          aria-live="polite"
-        >
-          Connecting...
-        </p>
+          <div
+            id="apple-music-placeholder"
+            class="flex h-full w-full items-center justify-center text-violet-300"
+            aria-hidden="true"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 18V5l12-2v13" />
+              <ellipse cx="6" cy="18" rx="3" ry="2" />
+              <ellipse cx="18" cy="16" rx="3" ry="2" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="min-w-0 flex-1">
+          <p
+            id="apple-music-title"
+            class="truncate text-xs font-semibold text-slate-100"
+            title="Not listening"
+          >
+            Not listening
+          </p>
+
+          <p
+            id="apple-music-artist"
+            class="mt-1 truncate text-[11px] text-slate-400"
+          >
+            Apple Music
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -180,20 +242,35 @@ const socials = [
 <script>
   const discordId = "245383078283968513";
 
-  // ELEMENT REFERENCES
+  // CLOCK ELEMENTS
   const clock = document.getElementById("developer-clock");
   const dateLabel = document.getElementById("developer-date");
   const timezoneLabel = document.getElementById("developer-timezone");
 
+  // DISCORD ELEMENTS
   const username = document.getElementById("discord-username");
   const status = document.getElementById("discord-status");
   const dot = document.getElementById("discord-status-dot");
+  const headerDot = document.getElementById("discord-header-dot");
 
   const avatar = document.getElementById(
     "discord-avatar"
   ) as HTMLImageElement | null;
 
-  // LIVE EASTERN TIME CLOCK
+  // MUSIC ELEMENTS
+  const musicTitle = document.getElementById("apple-music-title");
+  const musicArtist = document.getElementById("apple-music-artist");
+  const musicLiveDot = document.getElementById("apple-music-live-dot");
+
+  const musicArtwork = document.getElementById(
+    "apple-music-artwork"
+  ) as HTMLImageElement | null;
+
+  const musicPlaceholder = document.getElementById(
+    "apple-music-placeholder"
+  );
+
+  // EASTERN TIME CLOCK
   const updateClock = () => {
     const now = new Date();
 
@@ -216,7 +293,6 @@ const socials = [
       }).format(now);
     }
 
-    // AUTOMATIC EDT / EST SWITCHING
     if (timezoneLabel) {
       const timezonePart = new Intl.DateTimeFormat("en-US", {
         timeZone: "America/New_York",
@@ -230,10 +306,9 @@ const socials = [
   };
 
   updateClock();
-
   window.setInterval(updateClock, 1000);
 
-  // DISCORD PRESENCE
+  // DISCORD STATUS LABELS
   const statusLabels: Record<string, string> = {
     online: "Online",
     idle: "Idle",
@@ -248,10 +323,122 @@ const socials = [
     offline: "bg-slate-500",
   };
 
+  type DiscordActivity = {
+    name?: string;
+    type?: number;
+    details?: string;
+    state?: string;
+    application_id?: string;
+    assets?: {
+      large_image?: string;
+      large_text?: string;
+    };
+  };
+
+  // FIND APPLE MUSIC RICH PRESENCE ACTIVITY
+  const findAppleMusicActivity = (
+    activities: DiscordActivity[]
+  ): DiscordActivity | undefined => {
+    return activities.find((activity) => {
+      const name = (activity.name ?? "").toLowerCase();
+
+      const isAppleMusic =
+        name.includes("apple music") ||
+        name.includes("music presence") ||
+        name.includes("musicpresence");
+
+      return (
+        isAppleMusic &&
+        activity.type !== 4 &&
+        Boolean(activity.details || activity.state)
+      );
+    });
+  };
+
+  // CONVERT DISCORD ACTIVITY ARTWORK TO IMAGE URL
+  const resolveArtwork = (
+    activity: DiscordActivity
+  ): string | null => {
+    const image = activity.assets?.large_image;
+
+    if (!image) return null;
+
+    if (image.startsWith("mp:")) {
+      return `https://media.discordapp.net/${image.slice(3)}`;
+    }
+
+    if (image.startsWith("https://")) {
+      return image;
+    }
+
+    if (activity.application_id) {
+      return (
+        `https://cdn.discordapp.com/app-assets/` +
+        `${activity.application_id}/${encodeURIComponent(image)}.png`
+      );
+    }
+
+    return null;
+  };
+
+  // SHOW IDLE MUSIC STATE
+  const hideMusic = () => {
+    if (musicTitle) {
+      musicTitle.textContent = "Not listening";
+      musicTitle.title = "Not listening";
+    }
+
+    if (musicArtist) {
+      musicArtist.textContent = "Apple Music";
+      musicArtist.title = "Apple Music";
+    }
+
+    musicLiveDot?.classList.add("hidden");
+
+    if (musicArtwork) {
+      musicArtwork.removeAttribute("src");
+      musicArtwork.classList.add("hidden");
+    }
+
+    musicPlaceholder?.classList.remove("hidden");
+  };
+
+  // SHOW CURRENT SONG
+  const updateMusic = (activity: DiscordActivity) => {
+    const title = activity.details?.trim() || "Listening to music";
+    const artist = activity.state?.trim() || "Apple Music";
+
+    if (musicTitle) {
+      musicTitle.textContent = title;
+      musicTitle.title = title;
+    }
+
+    if (musicArtist) {
+      musicArtist.textContent = artist;
+      musicArtist.title = artist;
+    }
+
+    musicLiveDot?.classList.remove("hidden");
+
+    const artworkUrl = resolveArtwork(activity);
+
+    if (musicArtwork && artworkUrl) {
+      musicArtwork.src = artworkUrl;
+      musicArtwork.classList.remove("hidden");
+      musicPlaceholder?.classList.add("hidden");
+    } else if (musicArtwork) {
+      musicArtwork.removeAttribute("src");
+      musicArtwork.classList.add("hidden");
+      musicPlaceholder?.classList.remove("hidden");
+    }
+  };
+
+  // FETCH DISCORD PRESENCE AND MUSIC ACTIVITY
   const updateDiscord = async () => {
     try {
       const response = await fetch(
-        `https://api.lanyard.rest/v1/users/${discordId}`
+        `https://api.lanyard.rest/v1/users/${discordId}`,
+        { cache: "no-store" }
       );
 
       if (!response.ok) {
@@ -266,10 +453,23 @@ const socials = [
 
       const user = result.data.discord_user;
       const presence = result.data.discord_status ?? "offline";
+      if (headerDot) {
+  const headerColors: Record<string, string> = {
+    online: "bg-green-400",
+    idle: "bg-amber-400",
+    dnd: "bg-red-400",
+    offline: "bg-red-400",
+  };
+
+  headerDot.className =
+    "h-1.5 w-1.5 rounded-full " +
+    (headerColors[presence] ?? "bg-red-400");
+}
 
       if (username) {
         username.textContent =
           user.global_name || user.username || "Discord";
+        username.title = username.textContent;
       }
 
       if (status) {
@@ -289,6 +489,20 @@ const socials = [
           ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`
           : `https://cdn.discordapp.com/embed/avatars/${Number((BigInt(user.id) >> 22n) % 6n)}.png`;
       }
+
+      const activities: DiscordActivity[] = Array.isArray(
+        result.data.activities
+      )
+        ? result.data.activities
+        : [];
+
+      const appleMusic = findAppleMusicActivity(activities);
+
+      if (appleMusic) {
+        updateMusic(appleMusic);
+      } else {
+        hideMusic();
+      }
     } catch {
       if (status) {
         status.textContent = "Presence unavailable";
@@ -299,18 +513,24 @@ const socials = [
           "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
           "border-[3px] border-[#0B1020] bg-slate-500";
       }
+if (headerDot) {
+  headerDot.className =
+    "h-1.5 w-1.5 rounded-full bg-slate-500";
+}
+      hideMusic();
     }
   };
 
+  hideMusic();
   updateDiscord();
 
   window.setInterval(() => {
     if (!document.hidden) {
       updateDiscord();
     }
-  }, 30000);
+  }, 15000);
 
-  // LIVE ORLANDO WEATHER
+  // WEATHER ELEMENTS
   const weatherElement = document.getElementById("developer-weather");
   const weatherIcon = document.getElementById("weather-icon");
   const weatherTemperature = document.getElementById("weather-temperature");
@@ -318,12 +538,12 @@ const socials = [
   const weatherIcons: Record<string, string> = {
     sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>',
     moon: '<path d="M20.985 12.486A9 9 0 0 1 11.514 3.015a9 9 0 1 0 9.47 9.47Z"/>',
-    cloudSun: '<circle cx="12" cy="8" r="3"/><path d="M12 2v2m6.5.5-1.4 1.4M4.5 5.5l1.4 1.4"/><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.5 1A3.5 3.5 0 0 0 7 21h12a3 3 0 0 0 1-4Z"/>',
+    cloudSun: '<circle cx="12" cy="8" r="3"/><path d="M12 2v2m6.5.5-1.4 1.4M4.5 5.5l1.4 1.4"/><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.5 1A3.5 3.5 0 0 0 7 21h12a3 3 0 0 0 1-1.5Z"/>',
     cloudMoon: '<path d="M20 8a7 7 0 0 1-8-6 7 7 0 0 0-2 7"/><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.5 1A3.5 3.5 0 0 0 7 21h12a3 3 0 0 0 1-4Z"/>',
     cloud: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/>',
     rain: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="m8 19-1 3m6-3-1 3m6-3-1 3"/>',
     storm: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="m13 17-3 4h3l-1 2"/>',
-    snow: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="M8 21h.01M12 20h.01M17 21h.01"/>',
+    snow: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="M8 21h.01M12 20h.01M17 21h.01"/>',
     fog: '<path d="M3 8h18M2 12h20M4 16h16M7 20h10"/>',
   };
 
