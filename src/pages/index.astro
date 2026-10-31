@@ -3,9 +3,24 @@
 import "../styles/global.css";
 
 const skills = [
-  { category: "Cloud", items: ["AWS", "EC2", "S3", "IAM", "VPC", "Lambda"] },
-  { category: "Networking", items: ["TCP/IP", "DNS", "Subnets", "Routing", "Network Troubleshooting"] },
-  { category: "Development", items: ["Python", "Java", "C", "Git", "HTML", "CSS"] },
+  {
+    category: "Cloud & Infrastructure",
+    items: ["AWS", "EC2", "S3", "IAM", "VPC", "Lambda"],
+  },
+  {
+    category: "Networking",
+    items: [
+      "TCP/IP",
+      "DNS",
+      "Subnetting",
+      "Routing",
+      "Network Troubleshooting",
+    ],
+  },
+  {
+    category: "Development & Tools",
+    items: ["Python", "Java", "C", "Git", "HTML", "CSS"],
+  },
 ];
 
 const experience = [
@@ -13,19 +28,37 @@ const experience = [
     role: "Credit Card Associate",
     company: "JPMorgan Chase",
     period: "2026 — Present",
-    description: "Supporting customers in a regulated financial services environment, resolving account issues, and delivering accurate solutions.",
+    description:
+      "Supporting customers in a regulated financial services environment, resolving account issues, and delivering accurate solutions.",
   },
   {
     role: "Technical Support Advisor",
     company: "Concentrix",
     period: "Previous Role",
-    description: "Troubleshot technical issues, guided customers through solutions, and communicated technical concepts clearly.",
+    description:
+      "Troubleshot technical issues, guided customers through solutions, and communicated technical concepts clearly.",
   },
   {
     role: "Deli Team Lead",
     company: "Publix",
     period: "2021 — 2025",
-    description: "Supported daily operations, team coordination, customer service, and problem resolution.",
+    description:
+      "Supported daily operations, team coordination, customer service, and problem resolution.",
+  },
+];
+
+const certifications = [
+  {
+    title: "AWS Certified Cloud Practitioner",
+    organization: "Amazon Web Services",
+  },
+  {
+    title: "CompTIA Network+",
+    organization: "CompTIA",
+  },
+  {
+    title: "B.A.S. Computing Technology & Software Development",
+    organization: "Valencia College · Expected May 2027",
   },
 ];
 ---
@@ -33,196 +66,422 @@ const experience = [
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <meta name="theme-color" content="#0B1020" />
-    <meta name="description" content="Elijah Davids — Cloud and IT professional portfolio." />
+    <meta
+      name="description"
+      content="Elijah Davids — AWS Certified Cloud Practitioner, CompTIA Network+ certified, and aspiring cloud infrastructure engineer."
+    />
     <title>Elijah Davids | Cloud & Infrastructure</title>
   </head>
 
   <body class="bg-[#0B1020] text-slate-100 antialiased">
-    <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-[#0B1020]/90 backdrop-blur-lg">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+
+    <!-- NAVIGATION -->
+    <header
+      class="sticky top-0 z-50 border-b border-slate-800/70
+             bg-[#0B1020]/90 backdrop-blur-lg"
+    >
+      <nav
+        class="mx-auto flex max-w-6xl flex-wrap
+               items-center justify-between gap-4 px-6 py-5"
+      >
         <a href="#" class="text-2xl font-bold tracking-tight">
           ED<span class="text-sky-400">.</span>
         </a>
-        <div class="flex gap-5 text-sm text-slate-300">
-          <a href="#about" class="hover:text-sky-400">About</a>
-          <a href="#experience" class="hover:text-sky-400">Experience</a>
-          <a href="#skills" class="hover:text-sky-400">Skills</a>
-          <a href="#contact" class="hover:text-sky-400">Contact</a>
+
+        <div class="flex flex-wrap gap-4 text-sm text-slate-300 md:gap-6">
+          <a href="#about" class="hover:text-sky-400">
+            About
+          </a>
+          <a href="#projects" class="hover:text-sky-400">
+            Projects
+          </a>
+          <a href="#experience" class="hover:text-sky-400">
+            Experience
+          </a>
+          <a href="#skills" class="hover:text-sky-400">
+            Skills
+          </a>
+          <a href="#contact" class="hover:text-sky-400">
+            Contact
+          </a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <div class="pointer-events-none absolute right-0 top-16 -z-10 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl"></div>
 
-        <p class="mb-6 font-mono text-sm tracking-widest text-sky-400">
+      <!-- HERO -->
+      <section
+        class="relative mx-auto max-w-6xl px-6 py-28 md:py-36"
+      >
+        <div
+          class="pointer-events-none absolute right-0 top-16
+                 -z-10 h-72 w-72 rounded-full
+                 bg-sky-500/10 blur-3xl"
+        ></div>
+
+        <p
+          class="mb-6 font-mono text-sm tracking-widest text-sky-400"
+        >
           CLOUD COMPUTING / INFRASTRUCTURE / AWS
         </p>
 
-        <h1 class="text-6xl font-bold tracking-tight md:text-8xl">
+        <h1
+          class="text-6xl font-bold tracking-tight md:text-8xl"
+        >
           Hi, I'm <span class="text-sky-400">Elijah.</span>
         </h1>
 
-        <h2 class="mt-6 max-w-3xl text-2xl font-semibold text-slate-200 md:text-4xl">
+        <h2
+          class="mt-6 max-w-3xl text-2xl font-semibold
+                 text-slate-200 md:text-4xl"
+        >
           Aspiring Cloud & Infrastructure Engineer.
         </h2>
 
-        <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
-          AWS Certified Cloud Practitioner and CompTIA Network+ certified.
-          Passionate about cloud infrastructure, networking, and solving
-          complex technical problems.
+        <p
+          class="mt-7 max-w-2xl text-lg leading-8 text-slate-400"
+        >
+          AWS Certified Cloud Practitioner and CompTIA Network+
+          certified. Passionate about cloud infrastructure,
+          networking, and solving complex technical problems.
         </p>
 
         <div class="mt-10 flex flex-wrap gap-4">
-          <a href="#experience" class="rounded-lg bg-sky-400 px-7 py-3 font-semibold text-slate-950 transition hover:bg-sky-300">
-            Explore My Experience →
+          <a
+            href="#projects"
+            class="rounded-lg bg-sky-400 px-7 py-3
+                   font-semibold text-slate-950 transition
+                   hover:bg-sky-300"
+          >
+            Explore My Work →
           </a>
-          <a href="#contact" class="rounded-lg border border-slate-700 px-7 py-3 font-semibold transition hover:border-sky-400">
+
+          <a
+            href="#contact"
+            class="rounded-lg border border-slate-700
+                   px-7 py-3 font-semibold transition
+                   hover:border-sky-400"
+          >
             Contact Me
           </a>
         </div>
       </section>
 
-      <section id="about" class="border-y border-slate-800 bg-[#111B30]">
+      <!-- 01 ABOUT -->
+      <section
+        id="about"
+        class="scroll-mt-24 border-y border-slate-800 bg-[#111B30]"
+      >
         <div class="mx-auto max-w-6xl px-6 py-20">
-          <p class="font-mono text-sm text-sky-400">01 / ABOUT</p>
-          <h2 class="mt-3 text-4xl font-bold">About Me</h2>
-          <p class="mt-7 max-w-3xl text-lg leading-8 text-slate-300">
-            I'm pursuing a Bachelor of Applied Science in Computing Technology
-            and Software Development, concentrating in Cloud Computing at
-            Valencia College, with an expected graduation date of May 2027.
+          <p class="font-mono text-sm text-sky-400">
+            01 / ABOUT
           </p>
-          <p class="mt-5 max-w-3xl leading-8 text-slate-400">
-            My professional background combines technical troubleshooting,
-            customer support, and operational experience. I'm focused on
-            developing the skills needed to build, manage, and secure
-            modern cloud infrastructure.
+
+          <h2 class="mt-3 text-4xl font-bold">
+            About Me
+          </h2>
+
+          <p
+            class="mt-7 max-w-3xl text-lg leading-8 text-slate-300"
+          >
+            I'm pursuing a Bachelor of Applied Science in
+            Computing Technology and Software Development,
+            concentrating in Cloud Computing at Valencia College,
+            with an expected graduation date of May 2027.
+          </p>
+
+          <p
+            class="mt-5 max-w-3xl leading-8 text-slate-400"
+          >
+            My professional background combines technical
+            troubleshooting, customer support, and operational
+            experience. I'm focused on developing the skills
+            needed to build, manage, and secure modern cloud
+            infrastructure.
           </p>
         </div>
       </section>
 
-      <section id="experience" class="mx-auto max-w-6xl px-6 py-24">
-        <p class="font-mono text-sm text-sky-400">02 / CAREER</p>
-        <h2 class="mt-3 text-4xl font-bold">Professional Experience</h2>
+      <!-- 02 PROJECTS -->
+      <section
+        id="projects"
+        class="scroll-mt-24 mx-auto max-w-6xl px-6 py-24"
+      >
+        <p class="font-mono text-sm text-sky-400">
+          02 / PROJECTS
+        </p>
 
-        <div class="mt-12 space-y-10 border-l border-sky-400/40 pl-8">
-          {experience.map((job) => (
-            <article class="relative">
-              <span class="absolute -left-[39px] top-2 h-4 w-4 rounded-full border-4 border-[#0B1020] bg-sky-400"></span>
-              <p class="font-mono text-sm text-sky-400">{job.period}</p>
-              <h3 class="mt-2 text-2xl font-semibold">{job.role}</h3>
-              <p class="mt-1 text-slate-300">{job.company}</p>
-              <p class="mt-4 max-w-2xl leading-7 text-slate-400">
-                {job.description}
-              </p>
-            </article>
+        <h2 class="mt-3 text-4xl font-bold">
+          Featured Projects
+        </h2>
+
+        <p class="mt-4 max-w-2xl leading-7 text-slate-400">
+          Independent projects documenting my development,
+          technical problem-solving, and cloud engineering journey.
+        </p>
+
+        <article
+          class="mt-10 rounded-xl border border-slate-800
+                 bg-[#111B30] p-8 transition
+                 hover:border-sky-400/60 md:p-10"
+        >
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <p class="font-mono text-sm text-sky-400">
+              PROJECT 001 / WEB DEVELOPMENT
+            </p>
+
+            <span
+              class="rounded-full border border-sky-400/30
+                     bg-sky-400/10 px-3 py-1 text-xs
+                     font-medium text-sky-300"
+            >
+              Deployed
+            </span>
+          </div>
+
+          <h3 class="mt-5 text-2xl font-bold md:text-3xl">
+            Personal Portfolio & Deployment Pipeline
+          </h3>
+
+          <p class="mt-4 max-w-2xl leading-7 text-slate-400">
+            Designed and developed a responsive professional
+            portfolio using Astro and Tailwind CSS.
+            Implemented automated deployments through GitHub
+            and Vercel, with custom-domain DNS management
+            through Cloudflare.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            {[
+              "Astro",
+              "Tailwind CSS",
+              "Git",
+              "GitHub",
+              "Vercel",
+              "Cloudflare",
+            ].map((tech) => (
+              <span
+                class="rounded-md bg-sky-400/10
+                       px-3 py-2 text-sm text-sky-300"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href="/projects/cloud-portfolio"
+              class="rounded-lg bg-sky-400 px-6 py-3
+                     font-semibold text-slate-950 transition
+                     hover:bg-sky-300"
+            >
+              Read Case Study →
+            </a>
+
+            <a
+              href="https://github.com/Ejahmix/cloud-portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-lg border border-slate-700
+                     px-6 py-3 font-semibold transition
+                     hover:border-sky-400 hover:text-sky-400"
+            >
+              View Source Code ↗
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <!-- 03 EXPERIENCE -->
+      <section
+        id="experience"
+        class="scroll-mt-24 border-y border-slate-800 bg-[#111B30]"
+      >
+        <div class="mx-auto max-w-6xl px-6 py-24">
+          <p class="font-mono text-sm text-sky-400">
+            03 / CAREER
+          </p>
+
+          <h2 class="mt-3 text-4xl font-bold">
+            Professional Experience
+          </h2>
+
+          <div
+            class="mt-12 space-y-10 border-l
+                   border-sky-400/40 pl-8"
+          >
+            {experience.map((job) => (
+              <article class="relative">
+                <span
+                  class="absolute -left-[39px] top-2 h-4 w-4
+                         rounded-full border-4 border-[#111B30]
+                         bg-sky-400"
+                ></span>
+
+                <p class="font-mono text-sm text-sky-400">
+                  {job.period}
+                </p>
+
+                <h3 class="mt-2 text-2xl font-semibold">
+                  {job.role}
+                </h3>
+
+                <p class="mt-1 text-slate-300">
+                  {job.company}
+                </p>
+
+                <p class="mt-4 max-w-2xl leading-7 text-slate-400">
+                  {job.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 SKILLS -->
+      <section
+        id="skills"
+        class="scroll-mt-24 mx-auto max-w-6xl px-6 py-24"
+      >
+        <p class="font-mono text-sm text-sky-400">
+          04 / TOOLKIT
+        </p>
+
+        <h2 class="mt-3 text-4xl font-bold">
+          Technical Skills
+        </h2>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          {skills.map((group) => (
+            <div
+              class="rounded-xl border border-slate-700
+                     bg-[#111B30] p-7 transition
+                     hover:border-sky-400/60"
+            >
+              <h3 class="text-xl font-semibold">
+                {group.category}
+              </h3>
+
+              <div class="mt-6 flex flex-wrap gap-2">
+                {group.items.map((skill) => (
+                  <span
+                    class="rounded-md bg-sky-400/10
+                           px-3 py-2 text-sm text-sky-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      <section id="skills" class="border-y border-slate-800 bg-[#111B30]">
+      <!-- 05 CERTIFICATIONS -->
+      <section
+        class="border-y border-slate-800 bg-[#111B30]"
+      >
         <div class="mx-auto max-w-6xl px-6 py-24">
-          <p class="font-mono text-sm text-sky-400">03 / TOOLKIT</p>
-          <h2 class="mt-3 text-4xl font-bold">Technical Skills</h2>
+          <p class="font-mono text-sm text-sky-400">
+            05 / QUALIFICATIONS
+          </p>
 
-          <div class="mt-10 grid gap-6 md:grid-cols-3">
-            {skills.map((group) => (
-              <div class="rounded-xl border border-slate-700 bg-[#0B1020] p-7 transition hover:border-sky-400/60">
-                <h3 class="text-xl font-semibold">{group.category}</h3>
-                <div class="mt-6 flex flex-wrap gap-2">
-                  {group.items.map((skill) => (
-                    <span class="rounded-md bg-sky-400/10 px-3 py-2 text-sm text-sky-300">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+          <h2 class="mt-3 text-4xl font-bold">
+            Certifications & Education
+          </h2>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-2">
+            {certifications.map((cert) => (
+              <div
+                class="rounded-xl border border-slate-700
+                       bg-[#0B1020] p-7"
+              >
+                <h3 class="text-lg font-semibold">
+                  {cert.title}
+                </h3>
+
+                <p class="mt-2 text-sm text-slate-400">
+                  {cert.organization}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-6xl px-6 py-24">
-        <p class="font-mono text-sm text-sky-400">04 / QUALIFICATIONS</p>
-        <h2 class="mt-3 text-4xl font-bold">Certifications & Education</h2>
+      <!-- 06 CONTACT -->
+      <section
+        id="contact"
+        class="scroll-mt-24 px-6 py-24 text-center"
+      >
+        <p class="font-mono text-sm text-sky-400">
+          06 / CONNECT
+        </p>
 
-        <div class="mt-10 grid gap-5 md:grid-cols-2">
-          {[
-            ["AWS Certified Cloud Practitioner", "Amazon Web Services"],
-            ["CompTIA Network+", "CompTIA"],
-            ["B.A.S. Computing Technology & Software Development", "Valencia College · Expected May 2027"],
-          ].map(([title, subtitle]) => (
-            <div class="rounded-xl border border-slate-800 bg-[#111B30] p-7">
-              <h3 class="text-lg font-semibold">{title}</h3>
-              <p class="mt-2 text-sm text-slate-400">{subtitle}</p>
-            </div>
-          ))}
+        <h2 class="mt-4 text-4xl font-bold">
+          Let's Connect.
+        </h2>
+
+        <p
+          class="mx-auto mt-5 max-w-xl leading-8 text-slate-400"
+        >
+          I'm open to early-career opportunities in cloud
+          computing, IT infrastructure, and technical operations.
+          Feel free to reach out!
+        </p>
+
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <a
+            href="mailto:contact@elijahdavids.com"
+            class="rounded-lg bg-sky-400 px-7 py-3
+                   font-semibold text-slate-950 transition
+                   hover:bg-sky-300"
+          >
+            ✉ Email Me
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/elijahdavids/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-slate-700
+                   px-7 py-3 font-semibold transition
+                   hover:border-sky-400 hover:text-sky-400"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a
+            href="https://github.com/Ejahmix"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-slate-700
+                   px-7 py-3 font-semibold transition
+                   hover:border-sky-400 hover:text-sky-400"
+          >
+            GitHub ↗
+          </a>
         </div>
       </section>
 
-      
-<section
-  id="contact"
-  class="border-t border-slate-800 px-6 py-24 text-center"
->
-  <p class="font-mono text-sm text-sky-400">
-    05 / CONNECT
-  </p>
-
-  <h2 class="mt-4 text-4xl font-bold">
-    Let's Connect.
-  </h2>
-
-  <p class="mx-auto mt-5 max-w-xl leading-8 text-slate-400">
-    I'm open to early-career opportunities in cloud computing,
-    IT infrastructure, and technical operations.
-    Feel free to reach out!
-  </p>
-
-  <div class="mt-10 flex flex-wrap justify-center gap-4">
-
-    <!-- Email -->
-    <a
-      href="mailto:contact@elijahdavids.com"
-      class="rounded-lg bg-sky-400 px-7 py-3 font-semibold
-             text-slate-950 transition hover:bg-sky-300"
-    >
-      ✉ Email Me
-    </a>
-
-    <!-- LinkedIn -->
-    <a
-      href="https://www.linkedin.com/in/elijahdavids/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded-lg border border-slate-700 px-7 py-3
-             font-semibold transition hover:border-sky-400
-             hover:text-sky-400"
-    >
-      LinkedIn ↗
-    </a>
-
-    <!-- GitHub -->
-    <a
-      href="https://github.com/Ejahmix"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded-lg border border-slate-700 px-7 py-3
-             font-semibold transition hover:border-sky-400
-             hover:text-sky-400"
-    >
-      GitHub ↗
-    </a>
-
-  </div>
-</section>
     </main>
 
-    <footer class="border-t border-slate-800 py-8 text-center text-sm text-slate-500">
-      © {new Date().getFullYear()} Elijah Davids. Built with Astro.
+    <!-- FOOTER -->
+    <footer
+      class="border-t border-slate-800 py-8
+             text-center text-sm text-slate-500"
+    >
+      © {new Date().getFullYear()} Elijah Davids.
+      Built with Astro.
     </footer>
+
   </body>
 </html>
