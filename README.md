@@ -1,12 +1,12 @@
 # Cloud Portfolio — Elijah Davids
 
 [![Astro](https://img.shields.io/badge/Astro-Framework-BC52EE?logo=astro)](https://astro.build/)
-[![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?logo=github)](https://github.com/Ejahmix/cloud-portfolio)
+[![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?logo=github)](https://github.com/ElijahDavids/cloud-portfolio)
 [![Vercel](https://img.shields.io/badge/Vercel-Deployment-000000?logo=vercel)](https://vercel.com/)
 
 **Live Website:** https://portfolio.elijahdavids.com
 
-**Project Repository:** https://github.com/Ejahmix/cloud-portfolio
+**Project Repository:** https://github.com/ElijahDavids/cloud-portfolio
 
 ## Project Overview
 
@@ -88,7 +88,7 @@ portfolio.elijahdavids.com
 Clone the repository:
 
 ```bash
-git clone https://github.com/Ejahmix/cloud-portfolio.git
+git clone https://github.com/ElijahDavids/cloud-portfolio.git
 ```
 
 Navigate into the project:
@@ -200,7 +200,7 @@ Interested in cloud infrastructure, networking, cloud operations, and technical 
 
 **Portfolio:** https://portfolio.elijahdavids.com
 
-**GitHub:** https://github.com/Ejahmix
+**GitHub:** https://github.com/ElijahDavids
 
 **LinkedIn:** https://www.linkedin.com/in/elijahdavids/
 
