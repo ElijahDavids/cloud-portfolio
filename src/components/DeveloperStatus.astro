@@ -1,0 +1,484 @@
+
+---
+const discordId = "245383078283968513";
+
+const socials = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Ejahmix",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/elijahdavids",
+  },
+  {
+    label: "Discord",
+    href: `https://discord.com/users/${discordId}`,
+  },
+  {
+    label: "Email",
+    href: "mailto:contact@elijahdavids.com",
+  },
+];
+---
+
+<section
+  aria-labelledby="developer-status-title"
+  class="w-full max-w-[440px] overflow-hidden rounded-2xl border border-violet-400/30 bg-[#111B30]/90 p-7 shadow-2xl shadow-violet-950/30 backdrop-blur-md"
+>
+  <!-- HEADER -->
+  <div class="mb-7">
+    <p class="font-mono text-[10px] tracking-widest text-violet-400">
+      LIVE / DEVELOPER STATUS
+    </p>
+
+    <h2
+      id="developer-status-title"
+      class="mt-3 text-2xl font-bold tracking-tight text-slate-100"
+    >
+      Beyond the Code.
+    </h2>
+  </div>
+
+  <!-- LOCAL CLOCK -->
+  <div class="rounded-xl border border-slate-700/70 bg-[#0B1020]/90 p-5">
+    <div class="flex items-start justify-between gap-3">
+      <div class="min-w-0">
+        <p class="text-xs text-slate-400">
+          Local time
+        </p>
+
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <p
+            id="developer-clock"
+            class="text-2xl font-bold tabular-nums tracking-tight text-slate-100"
+          >
+            --:--:--
+          </p>
+
+          <span
+            id="developer-timezone"
+            class="shrink-0 rounded-full border border-sky-400/20 bg-sky-400/10 px-2 py-1 text-[10px] font-medium text-sky-300"
+          >
+            ET
+          </span>
+        </div>
+
+        <p
+          id="developer-date"
+          class="mt-2 text-xs text-violet-300"
+        >
+          Eastern Time
+        </p>
+      </div>
+
+      <!-- LOCATION + LIVE WEATHER -->
+      <div class="flex shrink-0 flex-col items-end gap-3">
+        <span class="text-[10px] text-violet-300">
+          Orlando, FL
+        </span>
+
+        <div
+          id="developer-weather"
+          class="flex items-center gap-1.5 text-slate-200"
+          title="Loading current weather"
+          aria-label="Loading current weather"
+        >
+          <span id="weather-icon" class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z" />
+            </svg>
+          </span>
+
+          <span
+            id="weather-temperature"
+            class="text-sm font-semibold tabular-nums"
+          >
+            --°F
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="mt-4 rounded-xl border border-slate-700/70 bg-[#0B1020]/90 p-5">
+    <p class="text-xs text-slate-400">
+      Status
+    </p>
+
+    <div class="mt-4 flex items-center gap-3">
+      <div class="relative h-12 w-12 shrink-0">
+        <img
+          id="discord-avatar"
+          src="/favicon.svg"
+          alt="Discord profile avatar"
+          class="h-12 w-12 rounded-full bg-slate-800 object-cover"
+          width="48"
+          height="48"
+        />
+
+        <span
+          id="discord-status-dot"
+          class="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-[3px] border-[#0B1020] bg-slate-500"
+          aria-hidden="true"
+        ></span>
+      </div>
+
+      <div class="min-w-0">
+        <p
+          id="discord-username"
+          class="truncate text-sm font-semibold text-slate-100"
+        >
+          Discord
+        </p>
+
+        <p
+          id="discord-status"
+          class="mt-1 text-xs text-slate-400"
+          aria-live="polite"
+        >
+          Connecting...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL LINKS -->
+  <div class="mt-6">
+    <p class="mb-4 text-sm font-medium text-slate-300">
+      Find me online
+    </p>
+
+    <div class="grid grid-cols-2 gap-3">
+      {socials.map((social) => (
+        <a
+          href={social.href}
+          target={social.label === "Email" ? undefined : "_blank"}
+          rel={social.label === "Email" ? undefined : "noopener noreferrer"}
+          class="flex items-center justify-between rounded-lg border border-violet-400/20 bg-violet-400/10 px-4 py-3 text-sm font-medium text-violet-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-400/50 hover:bg-sky-400/10 hover:text-sky-300"
+        >
+          <span>{social.label}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const discordId = "245383078283968513";
+
+  // ELEMENT REFERENCES
+  const clock = document.getElementById("developer-clock");
+  const dateLabel = document.getElementById("developer-date");
+  const timezoneLabel = document.getElementById("developer-timezone");
+
+  const username = document.getElementById("discord-username");
+  const status = document.getElementById("discord-status");
+  const dot = document.getElementById("discord-status-dot");
+
+  const avatar = document.getElementById(
+    "discord-avatar"
+  ) as HTMLImageElement | null;
+
+  // LIVE EASTERN TIME CLOCK
+  const updateClock = () => {
+    const now = new Date();
+
+    if (clock) {
+      clock.textContent = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }).format(now);
+    }
+
+    if (dateLabel) {
+      dateLabel.textContent = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        weekday: "long",
+        month: "short",
+        day: "numeric",
+      }).format(now);
+    }
+
+    // AUTOMATIC EDT / EST SWITCHING
+    if (timezoneLabel) {
+      const timezonePart = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        timeZoneName: "short",
+      })
+        .formatToParts(now)
+        .find((part) => part.type === "timeZoneName");
+
+      timezoneLabel.textContent = timezonePart?.value ?? "ET";
+    }
+  };
+
+  updateClock();
+
+  window.setInterval(updateClock, 1000);
+
+  // DISCORD PRESENCE
+  const statusLabels: Record<string, string> = {
+    online: "Online",
+    idle: "Idle",
+    dnd: "Do Not Disturb",
+    offline: "Offline / Invisible",
+  };
+
+  const statusColors: Record<string, string> = {
+    online: "bg-green-400",
+    idle: "bg-amber-400",
+    dnd: "bg-red-400",
+    offline: "bg-slate-500",
+  };
+
+  const updateDiscord = async () => {
+    try {
+      const response = await fetch(
+        `https://api.lanyard.rest/v1/users/${discordId}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Discord presence unavailable");
+      }
+
+      const result = await response.json();
+
+      if (!result.success || !result.data) {
+        throw new Error("Discord user not monitored");
+      }
+
+      const user = result.data.discord_user;
+      const presence = result.data.discord_status ?? "offline";
+
+      if (username) {
+        username.textContent =
+          user.global_name || user.username || "Discord";
+      }
+
+      if (status) {
+        status.textContent =
+          statusLabels[presence] ?? "Status unavailable";
+      }
+
+      if (dot) {
+        dot.className =
+          "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
+          "border-[3px] border-[#0B1020] " +
+          (statusColors[presence] ?? "bg-slate-500");
+      }
+
+      if (avatar && user.id) {
+        avatar.src = user.avatar
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`
+          : `https://cdn.discordapp.com/embed/avatars/${Number((BigInt(user.id) >> 22n) % 6n)}.png`;
+      }
+    } catch {
+      if (status) {
+        status.textContent = "Presence unavailable";
+      }
+
+      if (dot) {
+        dot.className =
+          "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
+          "border-[3px] border-[#0B1020] bg-slate-500";
+      }
+    }
+  };
+
+  updateDiscord();
+
+  window.setInterval(() => {
+    if (!document.hidden) {
+      updateDiscord();
+    }
+  }, 30000);
+
+  // LIVE ORLANDO WEATHER
+  const weatherElement = document.getElementById("developer-weather");
+  const weatherIcon = document.getElementById("weather-icon");
+  const weatherTemperature = document.getElementById("weather-temperature");
+
+  const weatherIcons: Record<string, string> = {
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>',
+    moon: '<path d="M20.985 12.486A9 9 0 0 1 11.514 3.015a9 9 0 1 0 9.47 9.47Z"/>',
+    cloudSun: '<circle cx="12" cy="8" r="3"/><path d="M12 2v2m6.5.5-1.4 1.4M4.5 5.5l1.4 1.4"/><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.5 1A3.5 3.5 0 0 0 7 21h12a3 3 0 0 0 1-4Z"/>',
+    cloudMoon: '<path d="M20 8a7 7 0 0 1-8-6 7 7 0 0 0-2 7"/><path d="M20 17a4 4 0 0 0-4-4 5 5 0 0 0-9.5 1A3.5 3.5 0 0 0 7 21h12a3 3 0 0 0 1-4Z"/>',
+    cloud: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/>',
+    rain: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="m8 19-1 3m6-3-1 3m6-3-1 3"/>',
+    storm: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="m13 17-3 4h3l-1 2"/>',
+    snow: '<path d="M20 16.5A4.5 4.5 0 0 0 17.5 8a6 6 0 0 0-11 2A4 4 0 0 0 7 18h12a3 3 0 0 0 1-1.5Z"/><path d="M8 21h.01M12 20h.01M17 21h.01"/>',
+    fog: '<path d="M3 8h18M2 12h20M4 16h16M7 20h10"/>',
+  };
+
+  const getWeatherAppearance = (code: number, isDay: boolean) => {
+    if (code === 0) {
+      return {
+        icon: isDay ? "sun" : "moon",
+        description: isDay ? "Clear sky" : "Clear night",
+        color: isDay ? "#FBBF24" : "#A78BFA",
+      };
+    }
+
+    if ([1, 2].includes(code)) {
+      return {
+        icon: isDay ? "cloudSun" : "cloudMoon",
+        description: "Partly cloudy",
+        color: "#38BDF8",
+      };
+    }
+
+    if (code === 3) {
+      return {
+        icon: "cloud",
+        description: "Overcast",
+        color: "#94A3B8",
+      };
+    }
+
+    if ([45, 48].includes(code)) {
+      return {
+        icon: "fog",
+        description: "Foggy",
+        color: "#94A3B8",
+      };
+    }
+
+    if (
+      [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)
+    ) {
+      return {
+        icon: "rain",
+        description: "Rainy",
+        color: "#38BDF8",
+      };
+    }
+
+    if ([71, 73, 75, 77, 85, 86].includes(code)) {
+      return {
+        icon: "snow",
+        description: "Snowy",
+        color: "#BAE6FD",
+      };
+    }
+
+    if ([95, 96, 99].includes(code)) {
+      return {
+        icon: "storm",
+        description: "Thunderstorm",
+        color: "#FBBF24",
+      };
+    }
+
+    return {
+      icon: "cloud",
+      description: "Current weather",
+      color: "#94A3B8",
+    };
+  };
+
+  const updateWeather = async () => {
+    try {
+      const url =
+        "https://api.open-meteo.com/v1/forecast" +
+        "?latitude=28.5383" +
+        "&longitude=-81.3792" +
+        "&current=temperature_2m,weather_code,is_day" +
+        "&temperature_unit=fahrenheit" +
+        "&timezone=America%2FNew_York";
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("Weather service unavailable");
+      }
+
+      const result = await response.json();
+      const current = result.current;
+
+      if (
+        !current ||
+        !Number.isFinite(current.temperature_2m) ||
+        !Number.isFinite(current.weather_code)
+      ) {
+        throw new Error("Invalid weather data");
+      }
+
+      const appearance = getWeatherAppearance(
+        current.weather_code,
+        current.is_day === 1
+      );
+
+      if (weatherTemperature) {
+        weatherTemperature.textContent =
+          `${Math.round(current.temperature_2m)}°F`;
+      }
+
+      if (weatherIcon) {
+        weatherIcon.style.color = appearance.color;
+
+        weatherIcon.innerHTML = `
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            ${weatherIcons[appearance.icon]}
+          </svg>
+        `;
+      }
+
+      if (weatherElement) {
+        const label =
+          `Orlando weather: ${appearance.description}, ` +
+          `${Math.round(current.temperature_2m)} degrees Fahrenheit`;
+
+        weatherElement.title = label;
+        weatherElement.setAttribute("aria-label", label);
+      }
+    } catch {
+      if (weatherTemperature) {
+        weatherTemperature.textContent = "--°F";
+      }
+
+      if (weatherElement) {
+        weatherElement.title = "Weather temporarily unavailable";
+        weatherElement.setAttribute(
+          "aria-label",
+          "Weather temporarily unavailable"
+        );
+      }
+    }
+  };
+
+  updateWeather();
+
+  window.setInterval(() => {
+    if (!document.hidden) {
+      updateWeather();
+    }
+  }, 15 * 60 * 1000);
+</script>
