@@ -10,13 +10,48 @@ const technologies = [
   "Vercel",
   "Cloudflare DNS",
 ];
+
+const architecture = [
+  {
+    number: "01",
+    name: "VS Code",
+    role: "Local development",
+    detail: "Build and test the Astro website",
+  },
+  {
+    number: "02",
+    name: "GitHub",
+    role: "Source control",
+    detail: "Store and version project code",
+  },
+  {
+    number: "03",
+    name: "Vercel",
+    role: "Build & deployment",
+    detail: "Automatically deploy changes from GitHub",
+  },
+  {
+    number: "04",
+    name: "Visitors",
+    role: "Production website",
+    detail: "Access the deployed portfolio",
+  },
+];
+
+const lessons = [
+  "Git version control and repository management",
+  "Automated deployment through GitHub and Vercel",
+  "Custom-domain configuration using Cloudflare DNS",
+  "Troubleshooting development and deployment issues",
+];
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0B1020" />
     <meta
       name="description"
       content="Technical case study of Elijah Davids' Astro portfolio and deployment workflow."
@@ -24,97 +59,301 @@ const technologies = [
     <title>Portfolio Case Study | Elijah Davids</title>
   </head>
 
-  <body class="min-h-screen bg-[#0B1020] text-slate-100">
-    <main class="mx-auto max-w-4xl px-6 py-16">
-      <a href="/#projects" class="text-sky-400 hover:underline">
-        ← Back to Projects
-      </a>
+  <body class="min-h-screen bg-[#0B1020] text-slate-100 antialiased">
 
-      <p class="mt-16 font-mono text-sm text-sky-400">
-        PROJECT 001 / WEB DEVELOPMENT & DEPLOYMENT
-      </p>
-
-      <h1 class="mt-4 text-4xl font-bold md:text-6xl">
-        Personal Portfolio &
-        <span class="text-sky-400">Deployment Pipeline.</span>
-      </h1>
-
-      <p class="mt-6 text-lg leading-8 text-slate-400">
-        Designing, building, and deploying a professional
-        portfolio using modern web technologies and
-        automated deployment workflows.
-      </p>
-
-      <div class="mt-8 flex flex-wrap gap-2">
-        {technologies.map((tech) => (
-          <span class="rounded-md bg-sky-400/10 px-3 py-2 text-sm text-sky-300">
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a
-          href="https://github.com/Ejahmix/cloud-portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-lg bg-sky-400 px-6 py-3 font-semibold text-slate-950"
-        >
-          View Source Code ↗
+    <!-- NAVIGATION -->
+    <header class="border-b border-slate-800/70 bg-[#0B1020]/90">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+        <a href="/" class="text-2xl font-bold tracking-tight">
+          ED<span class="text-violet-400">.</span>
         </a>
-      </div>
 
-      <div class="mt-20 space-y-16">
-        <section>
-          <h2 class="text-2xl font-bold">01. The Challenge</h2>
-          <p class="mt-4 leading-8 text-slate-400">
-            I wanted a professional online presence that could
-            evolve beyond a traditional résumé into a platform
-            for showcasing independent technical projects.
+        <a href="/#projects" class="nav-link text-sm text-slate-300">
+          ← Back to Projects
+        </a>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero-gradient relative overflow-hidden">
+        <div class="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
+
+          <div class="hero-orb hero-orb-blue" aria-hidden="true"></div>
+          <div class="hero-orb hero-orb-violet" aria-hidden="true"></div>
+
+          <div class="relative z-10 max-w-4xl">
+
+            <p class="hero-animate font-mono text-sm tracking-widest text-sky-400">
+              PROJECT 001 / WEB DEVELOPMENT & DEPLOYMENT
+            </p>
+
+            <h1 class="hero-animate hero-delay-1 mt-6 text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+              Personal Portfolio &
+              <span class="gradient-text">Deployment Pipeline.</span>
+            </h1>
+
+            <p class="hero-animate hero-delay-2 mt-7 max-w-2xl text-lg leading-8 text-slate-300">
+              Designing, building, and deploying a professional portfolio
+              using modern web technologies and automated deployment workflows.
+            </p>
+
+            <!-- TECHNOLOGIES -->
+            <div class="hero-animate hero-delay-3 mt-9 flex flex-wrap gap-3">
+              {technologies.map((tech) => (
+                <span
+                  class="rounded-lg border border-violet-400/20 bg-violet-400/10 px-3 py-2 text-sm text-violet-200"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="hero-animate hero-delay-3 mt-10 flex flex-wrap gap-4">
+
+              <a
+                href="https://github.com/Ejahmix/cloud-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="gradient-hover inline-flex items-center rounded-lg bg-sky-400 px-7 py-3 font-semibold text-slate-950"
+              >
+                View Source Code ↗
+              </a>
+
+              <a
+                href="https://portfolio.elijahdavids.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="secondary-button inline-flex items-center rounded-lg border border-violet-400/60 px-7 py-3 font-semibold text-violet-200"
+              >
+                View Live Website ↗
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASE STUDY CONTENT -->
+      <div class="mx-auto max-w-5xl space-y-12 px-6 py-20">
+
+        <!-- 01 CHALLENGE -->
+        <section class="reveal project-card-animated rounded-2xl border border-slate-800 bg-[#111B30] p-8 md:p-10">
+          <p class="font-mono text-sm text-violet-400">01 / THE CHALLENGE</p>
+
+          <h2 class="mt-3 text-3xl font-bold">
+            Building a professional digital presence
+          </h2>
+
+          <p class="mt-5 max-w-3xl leading-8 text-slate-400">
+            I wanted a professional online presence that could evolve beyond
+            a traditional résumé into a platform for showcasing independent
+            technical projects.
           </p>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold">02. The Solution</h2>
-          <p class="mt-4 leading-8 text-slate-400">
-            I built a responsive static website using Astro and
-            Tailwind CSS, then connected the source repository
-            to Vercel for automated production deployments.
+        <!-- 02 SOLUTION -->
+        <section class="reveal project-card-animated rounded-2xl border border-slate-800 bg-[#111B30] p-8 md:p-10">
+          <p class="font-mono text-sm text-sky-400">02 / THE SOLUTION</p>
+
+          <h2 class="mt-3 text-3xl font-bold">
+            A modern portfolio with automated deployment
+          </h2>
+
+          <p class="mt-5 max-w-3xl leading-8 text-slate-400">
+            I built a responsive static website using Astro and Tailwind CSS,
+            then connected the source repository to Vercel for automated
+            production deployments.
           </p>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold">03. Architecture</h2>
-          <div class="mt-6 rounded-xl border border-slate-800 bg-[#111B30] p-6">
-            <p class="font-mono text-sm leading-9 text-sky-300">
-              VS Code → GitHub → Vercel → Website Visitors
-            </p>
-            <p class="mt-3 text-sm text-slate-400">
-              Cloudflare manages DNS for the custom domain.
-            </p>
+        <!-- 03 ARCHITECTURE -->
+        <section class="reveal" aria-labelledby="architecture-heading">
+
+          <p class="font-mono text-sm text-violet-400">03 / ARCHITECTURE</p>
+
+          <h2 id="architecture-heading" class="mt-3 text-3xl font-bold">
+            From development to deployment
+          </h2>
+
+          <p class="mt-5 max-w-3xl leading-8 text-slate-400">
+            The workflow connects local development, source control,
+            automated deployment, and a custom domain.
+          </p>
+
+          <div class="architecture-panel mt-8 rounded-2xl border border-violet-400/20 p-6 md:p-10">
+
+            <div class="grid gap-4 md:grid-cols-4">
+
+              {architecture.map((node) => (
+                <div
+                  class="infrastructure-node relative rounded-xl border border-slate-700 bg-[#111B30] p-5"
+                >
+                  <p class="font-mono text-xs text-violet-400">
+                    {node.number}
+                  </p>
+
+                  <h3 class="mt-3 text-xl font-bold text-slate-100">
+                    {node.name}
+                  </h3>
+
+                  <p class="mt-2 text-sm font-semibold text-sky-400">
+                    {node.role}
+                  </p>
+
+                  <p class="mt-3 text-sm leading-6 text-slate-400">
+                    {node.detail}
+                  </p>
+                </div>
+              ))}
+
+            </div>
+
+            <!-- ANIMATED FLOW LINE -->
+            <svg
+              class="mt-6 hidden h-6 w-full md:block"
+              viewBox="0 0 800 24"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="deployment-gradient" x1="0%" x2="100%">
+                  <stop offset="0%" stop-color="#38BDF8" />
+                  <stop offset="100%" stop-color="#A78BFA" />
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M 10 12 H 790"
+                fill="none"
+                stroke="url(#deployment-gradient)"
+                stroke-width="2"
+                class="infrastructure-line"
+              />
+            </svg>
+
+            <!-- CLOUDFLARE DNS -->
+            <div class="mt-6 rounded-xl border border-sky-400/20 bg-sky-400/5 p-5">
+              <p class="font-mono text-xs tracking-widest text-sky-400">
+                CUSTOM DOMAIN / DNS
+              </p>
+
+              <h3 class="mt-2 text-lg font-semibold">
+                Cloudflare DNS
+              </h3>
+
+              <p class="mt-2 text-sm leading-7 text-slate-400">
+                Cloudflare manages DNS records for
+                <span class="text-violet-300">
+                  portfolio.elijahdavids.com
+                </span>,
+                directing visitors to the website deployed on Vercel.
+              </p>
+            </div>
+
           </div>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold">04. What I Learned</h2>
-          <p class="mt-4 leading-8 text-slate-400">
+        <!-- 04 LESSONS -->
+        <section class="reveal project-card-animated rounded-2xl border border-slate-800 bg-[#111B30] p-8 md:p-10">
+
+          <p class="font-mono text-sm text-sky-400">04 / WHAT I LEARNED</p>
+
+          <h2 class="mt-3 text-3xl font-bold">
+            Lessons from building and deploying
+          </h2>
+
+          <p class="mt-5 leading-8 text-slate-400">
             This project gave me hands-on experience with Git,
             repository management, automated deployments,
-            domain configuration, and troubleshooting a
-            local development environment.
+            domain configuration, and troubleshooting a local
+            development environment.
           </p>
+
+          <ul class="mt-7 grid gap-4 md:grid-cols-2">
+            {lessons.map((lesson) => (
+              <li class="rounded-lg border border-slate-700/70 bg-[#0B1020]/60 p-4 text-sm leading-6 text-slate-300">
+                <span class="mr-2 text-violet-400">✓</span>
+                {lesson}
+              </li>
+            ))}
+          </ul>
+
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold">05. Next Steps</h2>
-          <p class="mt-4 leading-8 text-slate-400">
-            My next objective is to explore AWS hosting using
-            Amazon S3, CloudFront, IAM, and GitHub Actions.
-            This will allow me to expand the project into
-            cloud infrastructure and deployment automation.
+        <!-- 05 NEXT STEPS -->
+        <section class="reveal project-card-animated rounded-2xl border border-slate-800 bg-[#111B30] p-8 md:p-10">
+
+          <p class="font-mono text-sm text-violet-400">05 / NEXT STEPS</p>
+
+          <h2 class="mt-3 text-3xl font-bold">
+            Expanding into AWS infrastructure
+          </h2>
+
+          <p class="mt-5 max-w-3xl leading-8 text-slate-400">
+            My next objective is to explore AWS hosting using Amazon S3,
+            CloudFront, IAM, and GitHub Actions. This will allow me to
+            expand the project into cloud infrastructure and deployment
+            automation.
           </p>
+
+          <div class="mt-7 flex flex-wrap gap-2">
+            {["Amazon S3", "CloudFront", "IAM", "GitHub Actions"].map((item) => (
+              <span class="rounded-md border border-sky-400/20 bg-sky-400/10 px-3 py-2 text-sm text-sky-300">
+                {item}
+              </span>
+            ))}
+          </div>
+
         </section>
+
+        <!-- BACK TO PORTFOLIO -->
+        <div class="reveal border-t border-slate-800 pt-10">
+          <a
+            href="/#projects"
+            class="nav-link inline-block font-semibold text-sky-400"
+          >
+            ← Back to All Projects
+          </a>
+        </div>
+
       </div>
     </main>
+
+    <footer class="border-t border-slate-800 py-8 text-center text-sm text-slate-500">
+      Built with Astro & Tailwind CSS · Elijah Davids
+    </footer>
+
+    <!-- SCROLL REVEAL -->
+    <script>
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        const elements =
+          document.querySelectorAll<HTMLElement>(".reveal");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin: "0px 0px -24px 0px",
+          }
+        );
+
+        elements.forEach((element) => observer.observe(element));
+        document.documentElement.classList.add("reveal-ready");
+      }
+    </script>
+
   </body>
 </html>
