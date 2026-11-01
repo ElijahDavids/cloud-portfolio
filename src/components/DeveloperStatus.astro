@@ -546,13 +546,113 @@ const discordId = "245383078283968513";
     }
   };
 
+// PRESENCE CACHING
+const PRESENCE_CACHE_KEY = "developer-presence-v1";
+const PRESENCE_CACHE_MAX_AGE = 5 * 60 * 1000;
+
+const getCachedPresence = () => {
+  try {
+    const raw = localStorage.getItem(PRESENCE_CACHE_KEY);
+    if (!raw) return null;
+
+    const cached = JSON.parse(raw);
+
+    if (
+      typeof cached.timestamp !== "number" ||
+      Date.now() - cached.timestamp > PRESENCE_CACHE_MAX_AGE
+    ) {
+      return null;
+    }
+
+    return cached.data;
+  } catch {
+    return null;
+  }
+};
+
+const saveCachedPresence = (data: unknown) => {
+  try {
+    localStorage.setItem(
+      PRESENCE_CACHE_KEY,
+      JSON.stringify({
+        timestamp: Date.now(),
+        data,
+      })
+    );
+  } catch {
+    // Storage may be unavailable.
+  }
+};
+
+//render discord presence and music
+const renderDiscord = (data: any) => {
+  const user = data.discord_user;
+  const presence = data.discord_status ?? "offline";
+
+  if (!user) return;
+
+  // Update username
+  if (username) {
+    username.textContent =
+      user.global_name || user.username || "Discord";
+
+    username.title = username.textContent;
+  }
+
+  // Update status text
+  if (status) {
+    status.textContent =
+      statusLabels[presence] ?? "Status unavailable";
+  }
+
+  // Update avatar status indicator
+  if (dot) {
+    dot.className =
+      "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
+      "border-[3px] border-[#0B1020] " +
+      (statusColors[presence] ?? "bg-slate-500");
+  }
+
+  // Update small indicator beside Status
+  if (headerDot) {
+    headerDot.className =
+      "h-1.5 w-1.5 rounded-full " +
+      (headerColors[presence] ?? "bg-slate-500");
+  }
+
+  // Update Discord avatar
+  if (avatar && user.id) {
+    avatar.src = user.avatar
+      ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`
+      : `https://cdn.discordapp.com/embed/avatars/${
+          Number((BigInt(user.id) >> 22n) % 6n)
+        }.png`;
+  }
+
+  // Update Apple Music
+  const activities = Array.isArray(data.activities)
+    ? data.activities
+    : [];
+
+  const appleMusic = findAppleMusicActivity(activities);
+
+  if (appleMusic) {
+    updateMusic(appleMusic);
+  } else {
+    hideMusic();
+  }
+};
+
   // FETCH DISCORD PRESENCE AND MUSIC
   const updateDiscord = async () => {
     try {
-      const response = await fetch(
-        `https://api.lanyard.rest/v1/users/${discordId}`,
-        { cache: "no-store" }
-      );
+     const response = await fetch(
+  `https://api.lanyard.rest/v1/users/${discordId}`,
+  {
+    cache: "no-store",
+    signal: AbortSignal.timeout(5000),
+  }
+);
 
       if (!response.ok) {
         throw new Error("Discord presence unavailable");
@@ -564,89 +664,47 @@ const discordId = "245383078283968513";
         throw new Error("Discord user not monitored");
       }
 
-      const user = result.data.discord_user;
-      const presence = result.data.discord_status ?? "offline";
+      renderDiscord(result.data);
+      saveCachedPresence(result.data);
 
-      // UPDATE SMALL STATUS HEADER DOT
-      if (headerDot) {
-        headerDot.className =
-          "h-1.5 w-1.5 rounded-full " +
-          (headerColors[presence] ?? "bg-red-400");
-      }
-
-      // UPDATE DISCORD NAME
-      if (username) {
-        username.textContent =
-          user.global_name || user.username || "Discord";
-
-        username.title = username.textContent;
-      }
-
-      // UPDATE STATUS TEXT
-      if (status) {
-        status.textContent =
-          statusLabels[presence] ?? "Status unavailable";
-      }
-
-      // UPDATE AVATAR STATUS DOT
-      if (dot) {
-        dot.className =
-          "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
-          "border-[3px] border-[#0B1020] " +
-          (statusColors[presence] ?? "bg-slate-500");
-      }
-
-      // UPDATE AVATAR
-      if (avatar && user.id) {
-        avatar.src = user.avatar
-          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`
-          : `https://cdn.discordapp.com/embed/avatars/${Number(
-              (BigInt(user.id) >> 22n) % 6n
-            )}.png`;
-      }
-
-      // UPDATE APPLE MUSIC
-      const activities: DiscordActivity[] = Array.isArray(
-        result.data.activities
-      )
-        ? result.data.activities
-        : [];
-
-      const appleMusic = findAppleMusicActivity(activities);
-
-      if (appleMusic) {
-        updateMusic(appleMusic);
-      } else {
-        hideMusic();
-      }
     } catch {
-      if (status) {
-        status.textContent = "Presence unavailable";
-      }
-
-      if (dot) {
-        dot.className =
-          "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
-          "border-[3px] border-[#0B1020] bg-slate-500";
-      }
-
-      if (headerDot) {
-        headerDot.className =
-          "h-1.5 w-1.5 rounded-full bg-slate-500";
-      }
-
-      hideMusic();
+  // Preserve recently cached presence during temporary API failures.
+  if (!getCachedPresence()) {
+    if (status) {
+      status.textContent = "Presence unavailable";
     }
-  };
 
-  hideMusic();
-  updateDiscord();
+    if (dot) {
+      dot.className =
+        "absolute -bottom-1 -right-1 h-4 w-4 rounded-full " +
+        "border-[3px] border-[#0B1020] bg-slate-500";
+    }
+
+    if (headerDot) {
+      headerDot.className =
+        "h-1.5 w-1.5 rounded-full bg-slate-500";
+    }
+
+    hideMusic();
+  }
+  }
+};
+
+ hideMusic();
+
+const cachedPresence = getCachedPresence();
+
+if (cachedPresence) {
+  renderDiscord(cachedPresence);
+}
+
+updateDiscord();
 
   window.setInterval(() => {
     if (!document.hidden) {
       updateDiscord();
     }
-  }, 15000);
+  }, 5000);
 
   // WEATHER ELEMENTS
   const weatherElement = document.getElementById("developer-weather");
@@ -821,4 +879,4 @@ const discordId = "245383078283968513";
       updateWeather();
     }
   }, 15 * 60 * 1000);
-</script>
+</script> 
